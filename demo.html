@@ -20,6 +20,10 @@
           <label>Some other field</label>
           <input type='text' name='otherField' ng-model='otherField' required />
         </p>
+        <p>
+          <label>My Date 2</label>
+          <quick-datepicker name='myDate2' ng-model='myDate2'  disable-timepicker='true' disable-datepicker='true' required></quick-datepicker>
+        </p>
       </form>
       <br/>
       <br/>
@@ -37,8 +41,11 @@
         });
       });
       app.controller("DemoCtrl", function($scope) {
-        $scope.myDate = null
-        $scope.setToToday = function() { $scope.myDate = new Date(); }
+        $scope.myDate = null;
+        $scope.setToToday = function() {
+          $scope.myDate = new Date();
+          $scope.myDate2 = new Date();
+        };
       });
     </script>
   </body>
