@@ -310,13 +310,14 @@ app.directive "quickDatepicker", ['ngQuickDateDefaults', '$filter', '$sce', (ngQ
         # When tab is pressed from the date input and the timepicker
         # is disabled, close the popup
         scope.onDateInputTab = ->
-            if scope.disableTimepicker
+            if scope.disableTimepicker || event.shiftKey
                 scope.toggleCalendar(false)
             true
 
         # When tab is pressed from the time input, close the popup
         scope.onTimeInputTab = ->
-            scope.toggleCalendar(false)
+            if !event.shiftKey
+                scope.toggleCalendar(false)
             true
 
         # View the next and previous months in the calendar popup
@@ -349,7 +350,7 @@ app.directive 'onTab', ->
     restrict: 'A',
     link: (scope, element, attr) ->
         element.bind 'keydown keypress', (e) ->
-            if (e.which == 9) && !e.shiftKey
+            if (e.which == 9)
                 scope.$apply(attr.onTab)
 app.filter 'replaceMonthWithAbbrev', ['ngQuickDateDefaults', '$filter', (ngQuickDateDefaults, $filter) ->
     (date) ->

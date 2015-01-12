@@ -317,13 +317,15 @@
             }
           };
           scope.onDateInputTab = function() {
-            if (scope.disableTimepicker) {
+            if (scope.disableTimepicker || event.shiftKey) {
               scope.toggleCalendar(false);
             }
             return true;
           };
           scope.onTimeInputTab = function() {
-            scope.toggleCalendar(false);
+            if (!event.shiftKey) {
+              scope.toggleCalendar(false);
+            }
             return true;
           };
           scope.nextMonth = function() {
@@ -360,7 +362,7 @@
       restrict: 'A',
       link: function(scope, element, attr) {
         return element.bind('keydown keypress', function(e) {
-          if ((e.which === 9) && !e.shiftKey) {
+          if (e.which === 9) {
             return scope.$apply(attr.onTab);
           }
         });
