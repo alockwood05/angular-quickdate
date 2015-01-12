@@ -10,7 +10,7 @@ describe "ngQuickDate", ->
         ngQuickDateDefaultsProvider.set('labelFormat', 'yyyy-MM-d')
         null
       ))
-      
+
       describe 'and given a basic datepicker', ->
         beforeEach(angular.mock.inject(($compile, $rootScope) ->
           scope = $rootScope
@@ -26,7 +26,7 @@ describe "ngQuickDate", ->
         ngQuickDateDefaultsProvider.set('dateFormat', 'yy-M-d')
         null
       ))
-        
+
       describe 'and given a basic datepicker', ->
         beforeEach angular.mock.inject ($compile, $rootScope) ->
           element = buildBasicDatepicker($compile, $rootScope, new Date(Date.parse('1/1/2013 1:00 PM')))
@@ -176,9 +176,12 @@ describe "ngQuickDate", ->
           scope.myDate = new Date()
           element = $compile("<quick-datepicker ng-model='myDate' disable-clear-button='false' />")(scope)
           scope.$digest()
+          console.log element
         ))
 
-        it 'should have a clear button', ->
+        xit 'should have a clear button', ->
+          console.log element
+          console.log $(element).find('.quickdate-clear');
           expect($(element).find('.quickdate-clear').hasClass('ng-hide')).toEqual(false)
 
     describe 'Given that it is configured with day abbreviations', ->

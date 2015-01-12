@@ -89,7 +89,7 @@ describe "ngQuickDate", ->
 
           it 'changes the calendar to the proper month', ->
             $monthSpan = $(element).find(".quickdate-month")
-            expect($monthSpan.html()).toEqual('November 2013')
+            expect($monthSpan.html()).toEqual('Nov 2013')
 
           it 'highlights the selected date', ->
             selectedTd = $(element).find('.selected')
@@ -119,7 +119,7 @@ describe "ngQuickDate", ->
 
         it 'does not change the calendar month', ->
           $monthSpan = $(element).find(".quickdate-month")
-          expect($monthSpan.html()).toEqual('September 2013')
+          expect($monthSpan.html()).toEqual('Sept 2013')
 
     describe 'Given a datepicker set to August 1, 2013', ->
       beforeEach angular.mock.inject(($compile, $rootScope) ->
@@ -131,7 +131,7 @@ describe "ngQuickDate", ->
 
       it 'shows the proper text in the button based on the value of the ng-model', ->
         $monthSpan = $(element).find(".quickdate-month")
-        expect($monthSpan.html()).toEqual('August 2013')
+        expect($monthSpan.html()).toEqual('Aug 2013')
 
       it 'has last-month classes on the first 4 boxes in the calendar (because the 1st is a Thursday)', ->
         firstRow = angular.element(element[0].querySelector(".quickdate-calendar tbody tr"))
@@ -153,7 +153,7 @@ describe "ngQuickDate", ->
 
         it 'shows September', ->
           $monthSpan = $(element).find(".quickdate-month")
-          expect($monthSpan.html()).toEqual('September 2013')
+          expect($monthSpan.html()).toEqual('Sept 2013')
 
         it 'shows the 1st on the first Sunday', ->
           expect($(element).find('.quickdate-calendar tbody tr:first td:first').text()).toEqual '1'
@@ -242,7 +242,7 @@ describe "ngQuickDate", ->
       mySpy = undefined
       beforeEach(inject(($compile, $rootScope) ->
         scope = $rootScope
-        scope.myVariable = 1
+        scope.myVariable = 0
         scope.myOtherVariable = null
         scope.myMethod = (param) ->
           scope.myVariable += 1
@@ -254,7 +254,7 @@ describe "ngQuickDate", ->
       ))
 
       it 'should not be called initially', ->
-        expect(scope.myVariable).toEqual(1)
+        expect(scope.myVariable).toEqual(0)
 
       # Can't get this spec to work
       describe 'When the date input is changed', ->
@@ -269,17 +269,16 @@ describe "ngQuickDate", ->
           browserTrigger($input, 'blur')
 
         it 'should call the method once', ->
-          expect(scope.myVariable).toEqual(2)
+          expect(scope.myVariable).toEqual(1)
           expect(scope.myOtherVariable).toEqual('hello!')
 
       describe 'When the date input is blurred but not changed', ->
         beforeEach ->
           $input = $(element).find('.quickdate-date-input')
-          browserTrigger($input, 'change')
-          browserTrigger($input, 'blur')
+          $input.triggerHandler('blur') #
 
         it 'should not call the method', ->
-          expect(scope.myVariable).toEqual(1)
+          expect(scope.myVariable).toEqual(0)
 
     describe 'Given a datepicker with a custom date format', ->
       beforeEach(inject(($compile, $rootScope) ->
