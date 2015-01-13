@@ -13,8 +13,8 @@
     <div ng-controller='DemoCtrl'>
       <form name='date_form' novalidate>
         <p>
-          <label>My Date</label>
-          <quick-datepicker name='myDate' ng-model='myDate' required></quick-datepicker>
+          <label>My Date (original)</label>
+          <quick-datepicker name='myDate' ng-model='myDate'  disable-timepicker='false' disable-datepicker='false' required></quick-datepicker>
         </p>
         <p>
           <label>Some other field</label>
@@ -22,7 +22,7 @@
         </p>
         <p>
           <label>My Date 2</label>
-          <quick-datepicker name='myDate2' ng-model='myDate2'  disable-timepicker='true' disable-datepicker='true' required></quick-datepicker>
+          <quick-datepicker name='myDate2' ng-model='myDate2'  required></quick-datepicker>
         </p>
       </form>
       <br/>
@@ -38,6 +38,14 @@
       var app = angular.module("ngQuickDateDemo", ["ngQuickDate"]);
       app.config(function(ngQuickDateDefaultsProvider) {
         return ngQuickDateDefaultsProvider.set({
+            disableTimepicker: true,
+            disableDatepicker: true,
+            disableClearButton: true,
+            dayAbbreviations: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+            dateFilter: function(d) {
+              var dayIndex = d.getDay();
+              return (dayIndex !== 0) && (dayIndex != 6);
+            }
         });
       });
       app.controller("DemoCtrl", function($scope) {
