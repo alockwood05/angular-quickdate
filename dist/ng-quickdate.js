@@ -371,10 +371,11 @@
     return {
       restrict: 'A',
       link: function(scope, element, attr) {
-        return element.bind('keydown keypress', function(e) {
+        return element.on('keydown keypress', function(e) {
           if (e.which === 9) {
-            return scope.$apply(attr.onTab);
+            scope.$apply(attr.onTab);
           }
+          return true;
         });
       }
     };

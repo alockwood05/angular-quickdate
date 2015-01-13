@@ -351,6 +351,10 @@ app.directive "quickdate", ['ngQuickdateDefaults', '$filter', '$sce', (ngQuickda
     templateUrl: 'ngQuickdate/template.html'
 ]
 
+# TODO:
+#   Remove ngEnter and onTab directives, remove mention of ng-blur
+#   Add single function to be called in init that binds events
+#   => less directives lighter weight and less likelihood of conflict with other libs
 app.directive 'ngEnter', ->
     (scope, element, attr) ->
         element.bind 'keydown keypress', (e) ->
@@ -361,9 +365,10 @@ app.directive 'ngEnter', ->
 app.directive 'onTab', ->
     restrict: 'A',
     link: (scope, element, attr) ->
-        element.bind 'keydown keypress', (e) ->
+        element.on 'keydown keypress', (e) ->
             if (e.which == 9)
                 scope.$apply(attr.onTab)
+            true
 app.filter 'replaceMonthWithAbbrev', ['ngQuickdateDefaults', '$filter', (ngQuickdateDefaults, $filter) ->
     (date) ->
         if ngQuickdateDefaults && date && ngQuickdateDefaults.months[date.getMonth()] then ngQuickdateDefaults.months[date.getMonth()] + ' ' + date.getFullYear() else $filter('date')(date)
