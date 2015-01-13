@@ -2,7 +2,7 @@
 <html data-ng-app='ngQuickDateDemo'>
   <head>
     <title>ngQuickDate Demo</title>
-    <link rel="stylesheet" type="text/css" href="dist/ng-quick-date-plus-default-theme.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="dist/ng-quickdate-plus-default-theme.css" media="all" />
     <style type="text/css">
       form.ng-dirty .ng-invalid .quickdate-button {
         border: solid 1px red;
@@ -14,7 +14,7 @@
       <form name='date_form' novalidate>
         <p>
           <label>My Date (original)</label>
-          <quick-date name='myDate' ng-model='myDate'  disable-timepicker='false' disable-datepicker='false' required></quick-date>
+          <quickdate name='myDate' ng-model='myDate'  disable-timepicker='false' disable-datepicker='false' required></quickdate>
         </p>
         <p>
           <label>Some other field</label>
@@ -22,7 +22,7 @@
         </p>
         <p>
           <label>My Date 2</label>
-          <quick-date name='myDate2' ng-model='myDate2'  required></quick-date>
+          <quickdate name='myDate2' ng-model='myDate2'  required></quickdate>
         </p>
       </form>
       <br/>
@@ -33,7 +33,7 @@
     <!-- <script type='text/javascript' src='vendor/sugar.js' /> -->
     <!-- <script type='text/javascript' src='vendor/date.js' /> -->
     <!-- <script type='text/javascript' src='bower_components/jquery/jquery.js' /> -->
-    <script type="text/javascript" src="dist/ng-quick-date.js"></script>
+    <script type="text/javascript" src="dist/ng-quickdate.js"></script>
     <script type='text/javascript'>
       var app = angular.module("ngQuickDateDemo", ["ngQuickDate"]);
       app.config(function(ngQuickDateDefaultsProvider) {
