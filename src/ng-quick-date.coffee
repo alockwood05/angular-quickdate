@@ -85,8 +85,8 @@ app.directive "quickDatepicker", ['ngQuickDateDefaults', '$filter', '$sce', (ngQ
             for key, value of ngQuickDateDefaults
                 if key.match(/[Hh]tml/)
                     scope[key] = $sce.trustAsHtml(ngQuickDateDefaults[key] || "")
-                else if !scope[key] && attrs[key]
-                    scope[key] = attrs[key]
+                else if !scope[key] && attrs[key]?
+                    scope[key] = if attrs[key] == 'false' then false else attrs[key]
                 else if !scope[key]
                     scope[key] = ngQuickDateDefaults[key]
             if !scope.labelFormat
