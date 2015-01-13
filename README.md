@@ -16,11 +16,11 @@ that's why bower name **angular-quickdate**
 formerly **ngDatePicker**
 formerly **ngQuickDate**
 
-# ngQuickDate
+# ngQuickdate
 
-ngQuickDate is an [Angular.js](http://angularjs.org/) Date/Time picker directive. It stresses speed of data entry and simplicity while being highly configurable and easy to re-style.
+ngQuickdate is an [Angular.js](http://angularjs.org/) Date/Time picker directive. It stresses speed of data entry and simplicity while being highly configurable and easy to re-style.
 
-![ngQuickDate Screenshot](https://raw.github.com/adamalbrecht/ngQuickDate/master/screenshot.png)
+![ngQuickdate Screenshot](https://raw.github.com/adamalbrecht/ngQuickdate/master/screenshot.png)
 
 ## Download
 
@@ -49,14 +49,14 @@ dependencies: {
 
 ## Demo
 
-You can find some basic examples [here](http://adamalbrecht.github.io/ngQuickDate)
+You can find some basic examples [here](http://adamalbrecht.github.io/ngQuickdate)
 
 ## The Basics
 
 To use the library, include the JS file, main CSS file, and (optionally, but recommended) the theme CSS file. Then include the module in your app:
 
 ```javascript
-app = angular.module("myApp", ["ngQuickDate"])
+app = angular.module("myApp", ["ngQuickdate"])
 ```
 
 The directive itself is simply called *datepicker*. The only required attribute is ngModel, which should be a date object.
@@ -103,10 +103,10 @@ There are a number of options that be configured inline with attributes. Here ar
 If you want to use a different default for any of the inline options, you can do so by configuring the datepicker during your app's configuration phase. There are also several options that may only be configured in this way.
 
 ```javascript
-app.config(function(ngQuickDateDefaultsProvider) {
-  ngQuickDateDefaultsProvider.set('option', 'value');
+app.config(function(ngQuickdateDefaultsProvider) {
+  ngQuickdateDefaultsProvider.set('option', 'value');
   // Or with a hash
-  ngQuickDateDefaultsProvider.set({option: 'value', option2: 'value2'});
+  ngQuickdateDefaultsProvider.set({option: 'value', option2: 'value2'});
 })
 ```
 
@@ -139,8 +139,8 @@ By default, dates and times entered into the 2 input boxes are parsed using java
 If you'd like to use Sugar, you can configure it to work like so:
 
 ```javascript
-app.config(function(ngQuickDateDefaultsProvider) {
-  ngQuickDateDefaultsProvider.set('parseDateFunction', function(str) {
+app.config(function(ngQuickdateDefaultsProvider) {
+  ngQuickdateDefaultsProvider.set('parseDateFunction', function(str) {
     d = Date.create(str);
     return d.isValid() ? d : null;
   });
@@ -185,9 +185,9 @@ There is a very light set of styles that allow the datepicker to function, but i
 You can improve it's appearance quite a bit by using a Font Icon library like [Font Awesome](http://fontawesome.io/). To make look like the screenshot above, you'd need Font Awesome 4.0 and the following configuration:
 
 ```javascript
-app.config(function(ngQuickDateDefaultsProvider) {
+app.config(function(ngQuickdateDefaultsProvider) {
   // Configure with icons from font-awesome
-  return ngQuickDateDefaultsProvider.set({
+  return ngQuickdateDefaultsProvider.set({
     closeButtonHtml: "<i class='fa fa-times'></i>",
     buttonIconHtml: "<i class='fa fa-calendar'></i>",
     nextLinkHtml: "<i class='fa fa-chevron-right'></i>",

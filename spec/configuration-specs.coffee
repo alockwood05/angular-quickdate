@@ -1,13 +1,13 @@
 "use strict"
 
-describe "ngQuickDate", ->
-  beforeEach angular.mock.module("ngQuickDate")
+describe "ngQuickdate", ->
+  beforeEach angular.mock.module("ngQuickdate")
   describe "datepicker", ->
     element = undefined
     scope = undefined
     describe 'Given that a non-default label format is configured', ->
-      beforeEach(module('ngQuickDate', (ngQuickDateDefaultsProvider) ->
-        ngQuickDateDefaultsProvider.set('labelFormat', 'yyyy-MM-d')
+      beforeEach(module('ngQuickdate', (ngQuickdateDefaultsProvider) ->
+        ngQuickdateDefaultsProvider.set('labelFormat', 'yyyy-MM-d')
         null
       ))
 
@@ -22,8 +22,8 @@ describe "ngQuickDate", ->
           expect($(element).find('.quickdate-button').text()).toEqual('2013-08-1')
 
     describe 'Given that a non-default date format is configured', ->
-      beforeEach(module('ngQuickDate', (ngQuickDateDefaultsProvider) ->
-        ngQuickDateDefaultsProvider.set('dateFormat', 'yy-M-d')
+      beforeEach(module('ngQuickdate', (ngQuickdateDefaultsProvider) ->
+        ngQuickdateDefaultsProvider.set('dateFormat', 'yy-M-d')
         null
       ))
 
@@ -37,8 +37,8 @@ describe "ngQuickDate", ->
           expect($(element).find('.quickdate-button').text()).toEqual('13-1-1 1:00 PM')
 
     describe 'Given that a non-default close button is configured', ->
-      beforeEach(module('ngQuickDate', (ngQuickDateDefaultsProvider) ->
-        ngQuickDateDefaultsProvider.set('closeButtonHtml', "<i class='icon-remove'></i>")
+      beforeEach(module('ngQuickdate', (ngQuickdateDefaultsProvider) ->
+        ngQuickdateDefaultsProvider.set('closeButtonHtml', "<i class='icon-remove'></i>")
         null
       ))
       describe 'and given a basic datepicker', ->
@@ -49,8 +49,8 @@ describe "ngQuickDate", ->
           expect($(element).find('.quickdate-close').html()).toMatch('icon-remove')
 
     describe 'Given that non-default next and previous links are configured', ->
-      beforeEach(module('ngQuickDate', (ngQuickDateDefaultsProvider) ->
-        ngQuickDateDefaultsProvider.set({
+      beforeEach(module('ngQuickdate', (ngQuickdateDefaultsProvider) ->
+        ngQuickdateDefaultsProvider.set({
           nextLinkHtml: "<i class='icon-arrow-right'></i>",
           prevLinkHtml: "<i class='icon-arrow-left'></i>"
         })
@@ -65,8 +65,8 @@ describe "ngQuickDate", ->
           expect($(element).find('.quickdate-prev-month').html()).toMatch('icon-arrow-left')
 
     describe 'Given that the button icon html is configured', ->
-      beforeEach(module('ngQuickDate', (ngQuickDateDefaultsProvider) ->
-        ngQuickDateDefaultsProvider.set('buttonIconHtml', "<i class='icon-time'></i>")
+      beforeEach(module('ngQuickdate', (ngQuickdateDefaultsProvider) ->
+        ngQuickdateDefaultsProvider.set('buttonIconHtml', "<i class='icon-time'></i>")
         null
       ))
       describe 'and given a basic datepicker', ->
@@ -96,8 +96,8 @@ describe "ngQuickDate", ->
         expect($(element).find('.ng-quickdate-input-wrapper:last').hasClass('ng-hide')).toEqual(false)
 
     describe 'Given that it is configured without the timepicker', ->
-      beforeEach(module('ngQuickDate', (ngQuickDateDefaultsProvider) ->
-        ngQuickDateDefaultsProvider.set('disableTimepicker', true)
+      beforeEach(module('ngQuickdate', (ngQuickdateDefaultsProvider) ->
+        ngQuickdateDefaultsProvider.set('disableTimepicker', true)
         null
       ))
       describe 'and given a basic datepicker', ->
@@ -124,9 +124,9 @@ describe "ngQuickDate", ->
 
 
     describe 'Given that it is configured with a custom date/time parser function that always returns July 1, 2013', ->
-      beforeEach(module('ngQuickDate', (ngQuickDateDefaultsProvider) ->
+      beforeEach(module('ngQuickdate', (ngQuickdateDefaultsProvider) ->
         alwaysReturnsJulyFirst2013 = (str) -> new Date(2013, 6, 1)
-        ngQuickDateDefaultsProvider.set('parseDateFunction', alwaysReturnsJulyFirst2013)
+        ngQuickdateDefaultsProvider.set('parseDateFunction', alwaysReturnsJulyFirst2013)
         null
       ))
       describe 'and a basic datepicker', ->
@@ -145,8 +145,8 @@ describe "ngQuickDate", ->
             expect(element.scope().myDate).toMatch(/Jul 01 2013/)
 
     describe 'Given that it is configured with a default placeholder', ->
-      beforeEach(module('ngQuickDate', (ngQuickDateDefaultsProvider) ->
-        ngQuickDateDefaultsProvider.set('placeholder', 'No Date Chosen')
+      beforeEach(module('ngQuickdate', (ngQuickdateDefaultsProvider) ->
+        ngQuickdateDefaultsProvider.set('placeholder', 'No Date Chosen')
         null
       ))
       describe 'and a basic datepicker set to nothing', ->
@@ -158,8 +158,8 @@ describe "ngQuickDate", ->
           expect($(element).find('.quickdate-button').html()).toMatch('No Date Chosen')
 
     describe 'Given that it is configured without a clear button', ->
-      beforeEach(module('ngQuickDate', (ngQuickDateDefaultsProvider) ->
-        ngQuickDateDefaultsProvider.set('disableClearButton', true)
+      beforeEach(module('ngQuickdate', (ngQuickdateDefaultsProvider) ->
+        ngQuickdateDefaultsProvider.set('disableClearButton', true)
         null
       ))
       describe 'and given a basic datepicker', ->
@@ -185,8 +185,8 @@ describe "ngQuickDate", ->
           expect($(element).find('.quickdate-clear').hasClass('ng-hide')).toEqual(false)
 
     describe 'Given that it is configured with day abbreviations', ->
-      beforeEach(module('ngQuickDate', (ngQuickDateDefaultsProvider) ->
-        ngQuickDateDefaultsProvider.set('dayAbbreviations', ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"])
+      beforeEach(module('ngQuickdate', (ngQuickdateDefaultsProvider) ->
+        ngQuickdateDefaultsProvider.set('dayAbbreviations', ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"])
         null
       ))
       describe 'and given a basic datepicker', ->
@@ -198,8 +198,8 @@ describe "ngQuickDate", ->
           expect($(element).find('.quickdate-calendar thead th').size()).toEqual(7)
 
     describe 'Given that it is configured with duplicate day abbreviations', ->
-      beforeEach(module('ngQuickDate', (ngQuickDateDefaultsProvider) ->
-        ngQuickDateDefaultsProvider.set('dayAbbreviations', ["S", "M", "T", "W", "T", "F", "S"])
+      beforeEach(module('ngQuickdate', (ngQuickdateDefaultsProvider) ->
+        ngQuickdateDefaultsProvider.set('dayAbbreviations', ["S", "M", "T", "W", "T", "F", "S"])
         null
       ))
       describe 'and given a basic datepicker', ->
@@ -212,8 +212,8 @@ describe "ngQuickDate", ->
 
 
     xdescribe 'Given that a default time of 1:52 am is configured', ->
-      beforeEach(module('ngQuickDate', (ngQuickDateDefaultsProvider) ->
-        ngQuickDateDefaultsProvider.set('defaultTime', '01:52')
+      beforeEach(module('ngQuickdate', (ngQuickdateDefaultsProvider) ->
+        ngQuickdateDefaultsProvider.set('defaultTime', '01:52')
         null
       ))
       describe 'and given a basic datepicker with a null model', ->

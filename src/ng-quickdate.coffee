@@ -1,16 +1,16 @@
 #
-# ngQuickDate
+# ngQuickdate
 # by Adam Albrecht
 # http://adamalbrecht.com
 #
-# Source Code: https://github.com/adamalbrecht/ngQuickDate
+# Source Code: https://github.com/adamalbrecht/ngQuickdate
 #
 # Compatible with Angular 1.2.0+
 #
 
-app = angular.module("ngQuickDate", [])
+app = angular.module("ngQuickdate", [])
 
-app.provider "ngQuickDateDefaults", ->
+app.provider "ngQuickdateDefaults", ->
     {
         options: {
             dateFormat: 'M/d/yyyy'
@@ -52,7 +52,7 @@ app.provider "ngQuickDateDefaults", ->
                 @options[keyOrHash] = value
     }
 
-app.directive "quickdate", ['ngQuickDateDefaults', '$filter', '$sce', (ngQuickDateDefaults, $filter, $sce) ->
+app.directive "quickdate", ['ngQuickdateDefaults', '$filter', '$sce', (ngQuickdateDefaults, $filter, $sce) ->
     restrict: "E"
     require: "?ngModel"
     scope:
@@ -82,13 +82,13 @@ app.directive "quickdate", ['ngQuickDateDefaults', '$filter', '$sce', (ngQuickDa
 
         # Copy various configuration options from the default configuration to scope
         setConfigOptions = ->
-            for key, value of ngQuickDateDefaults
+            for key, value of ngQuickdateDefaults
                 if key.match(/[Hh]tml/)
-                    scope[key] = $sce.trustAsHtml(ngQuickDateDefaults[key] || "")
+                    scope[key] = $sce.trustAsHtml(ngQuickdateDefaults[key] || "")
                 else if !scope[key] && attrs[key]?
                     scope[key] = if attrs[key] == 'false' then false else attrs[key]
                 else if !scope[key]
-                    scope[key] = ngQuickDateDefaults[key]
+                    scope[key] = ngQuickdateDefaults[key]
             if !scope.labelFormat
                 scope.labelFormat = scope.dateFormat
                 unless scope.disableTimepicker
@@ -219,7 +219,7 @@ app.directive "quickdate", ['ngQuickDateDefaults', '$filter', '$sce', (ngQuickDa
             else
                 date
 
-        parseDateString = ngQuickDateDefaults.parseDateFunction
+        parseDateString = ngQuickdateDefaults.parseDateFunction
 
         datesAreEqual = (d1, d2, compareTimes=false) ->
             if compareTimes
@@ -348,7 +348,7 @@ app.directive "quickdate", ['ngQuickDateDefaults', '$filter', '$sce', (ngQuickDa
 
     # TEMPLATE
     # ================================================================
-    templateUrl: 'ngQuickDate/template.html'
+    templateUrl: 'ngQuickdate/template.html'
 ]
 
 app.directive 'ngEnter', ->
@@ -364,13 +364,13 @@ app.directive 'onTab', ->
         element.bind 'keydown keypress', (e) ->
             if (e.which == 9)
                 scope.$apply(attr.onTab)
-app.filter 'replaceMonthWithAbbrev', ['ngQuickDateDefaults', '$filter', (ngQuickDateDefaults, $filter) ->
+app.filter 'replaceMonthWithAbbrev', ['ngQuickdateDefaults', '$filter', (ngQuickdateDefaults, $filter) ->
     (date) ->
-        if ngQuickDateDefaults && date && ngQuickDateDefaults.months[date.getMonth()] then ngQuickDateDefaults.months[date.getMonth()] + ' ' + date.getFullYear() else $filter('date')(date)
+        if ngQuickdateDefaults && date && ngQuickdateDefaults.months[date.getMonth()] then ngQuickdateDefaults.months[date.getMonth()] + ' ' + date.getFullYear() else $filter('date')(date)
 ]
 app.run ['$templateCache', ($templateCache) ->
     $templateCache.put(
-        'ngQuickDate/template.html'
+        'ngQuickdate/template.html'
         """
         <div class='quickdate'>
             <a href='' onclick='toggleCalendar(true)' ng-focus='toggleCalendar(true)' class='quickdate-button' title='{{hoverText}}' on-tab='onDateButtonTab()'><div ng-hide='iconClass' ng-bind-html='buttonIconHtml'></div>{{mainButtonStr}}</a>

@@ -1,7 +1,7 @@
 "use strict"
 
-describe "ngQuickDate", ->
-  beforeEach angular.mock.module("ngQuickDate")
+describe "ngQuickdate", ->
+  beforeEach angular.mock.module("ngQuickdate")
   describe "datepicker", ->
     element = undefined
     scope = undefined

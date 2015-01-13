@@ -1,7 +1,7 @@
 {
-  "name": "ngDatePicker",
-  "repository": "https://github.com/KillerCodeMonkey/ngQuickDate.git",
-  "version": "1.3.5",
+  "name": "ngQuickdate",
+  "repository": "https://github.com/alockwood05/ngQuickdate.git",
+  "version": "1.3.6",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-coffee": "~0.7",
