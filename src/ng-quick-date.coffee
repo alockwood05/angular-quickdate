@@ -52,7 +52,7 @@ app.provider "ngQuickDateDefaults", ->
                 @options[keyOrHash] = value
     }
 
-app.directive "quickDatepicker", ['ngQuickDateDefaults', '$filter', '$sce', (ngQuickDateDefaults, $filter, $sce) ->
+app.directive "quickDate", ['ngQuickDateDefaults', '$filter', '$sce', (ngQuickDateDefaults, $filter, $sce) ->
     restrict: "E"
     require: "?ngModel"
     scope:
