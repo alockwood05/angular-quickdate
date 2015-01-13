@@ -1,4 +1,5 @@
-Copyright (c) 2010-2014 Adam Albrecht (http://adamalbrecht.com) and Bengt Weiße other contributors
+Copyright (c) 2010-2014 Adam Albrecht (http://adamalbrecht.com),
+Bengt Weiße, Alex Lockwood, and other contributors
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation

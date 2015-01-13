@@ -7,7 +7,14 @@ Original repository is not supported very much. Here is the source code of the o
 * added ability to hide date input
 * set placeholder to current date
 
-that's why bower name **ngDatePicker**
+and now a few more:
+
+* tabbing functionality, including shift+tab
+* tested with angular 1.3.8
+
+that's why bower name **angular-quick-date**
+formerly **ngDatePicker**
+formerly **ngQuickDate**
 
 # ngQuickDate
 
@@ -55,7 +62,7 @@ app = angular.module("myApp", ["ngQuickDate"])
 The directive itself is simply called *datepicker*. The only required attribute is ngModel, which should be a date object.
 
 ```html
-<quick-datepicker ng-model='myDate'></quick-datepicker>
+<quick-date ng-model='myDate'></quick-date>
 ```
 * Note: This should just be `<datepicker>` before version 1.3
 
@@ -88,7 +95,7 @@ There are a number of options that be configured inline with attributes. Here ar
 **Example:**
 
 ```html
-<quick-datepicker ng-model='myDate' date-format='EEEE, MMMM d, yyyy' placeholder='Pick a Date' disable-timepicker='true'></quick-datepicker>
+<quick-date ng-model='myDate' date-format='EEEE, MMMM d, yyyy' placeholder='Pick a Date' disable-timepicker='true'></quick-date>
 ```
 
 ## Configuration Options
@@ -159,7 +166,7 @@ Note that when displaying dates in a well-formatted manner, Angular's [Date filt
 If you'd like to prevent the user from choosing certain dates, such as weekends or dates that have already been 'reserved', you can do so with the `date-filter` attribute. For example, if you want to disable weekends, you can do it like so:
 
 ```html
-<quick-datepicker ng-model='myDate' date-filter='onlyWeekdays'></quick-datepicker>
+<quick-date ng-model='myDate' date-filter='onlyWeekdays'></quick-date>
 ```
 
 ```javascript

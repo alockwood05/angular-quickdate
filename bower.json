@@ -1,6 +1,6 @@
 {
-  "name": "ngDatePicker",
-  "version": "1.3.5",
+  "name": "angular-quick-date",
+  "version": "1.3.6",
   "main": ["dist/ng-quick-date.js", "dist/ng-quick-date.css", "dist/ng-quick-date-default-theme.css"],
   "ignore": [
     "bower_components",
