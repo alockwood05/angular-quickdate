@@ -109,8 +109,11 @@ app.directive "quickDatepicker", ['ngQuickDateDefaults', '$filter', '$sce', (ngQ
                 scope.$apply()
             datepickerClicked = false
 
-        angular.element(element[0])[0].addEventListener 'click', (event) ->
+        element.on 'click', (event) ->
             datepickerClicked = true
+
+        angular.element(element[0]).on 'focus', (event) ->
+            console.log 'FOCUS', event
 
         # SCOPE MANIPULATION Methods
         # ================================
@@ -310,7 +313,7 @@ app.directive "quickDatepicker", ['ngQuickDateDefaults', '$filter', '$sce', (ngQ
         # When tab is pressed from the date input and the timepicker
         # is disabled, close the popup
         scope.onDateInputTab = ->
-            if scope.disableTimepicker || event.shiftKey
+            if scope.disableTimepicker
                 scope.toggleCalendar(false)
             true
 
@@ -319,6 +322,15 @@ app.directive "quickDatepicker", ['ngQuickDateDefaults', '$filter', '$sce', (ngQ
             if !event.shiftKey
                 scope.toggleCalendar(false)
             true
+
+        # when tab is pressed from the root link and we exit the picker
+        # then close the date picker
+        scope.onDateButtonTab = ->
+            if event.shiftKey
+                scope.toggleCalendar(false)
+            else if scope.disableTimepicker && scope.disableDatepicker
+                scope.toggleCalendar(false)
+
 
         # View the next and previous months in the calendar popup
         scope.nextMonth = ->
@@ -361,7 +373,7 @@ app.run ['$templateCache', ($templateCache) ->
         'ngQuickDate/template.html'
         """
         <div class='quickdate'>
-            <a href='' ng-click='toggleCalendar()' class='quickdate-button' title='{{hoverText}}'><div ng-hide='iconClass' ng-bind-html='buttonIconHtml'></div>{{mainButtonStr}}</a>
+            <a href='' onclick='toggleCalendar(true)' ng-focus='toggleCalendar(true)' class='quickdate-button' title='{{hoverText}}' on-tab='onDateButtonTab()'><div ng-hide='iconClass' ng-bind-html='buttonIconHtml'></div>{{mainButtonStr}}</a>
             <div class='quickdate-popup' ng-class='{open: calendarShown}'>
                 <a href='' tabindex='-1' class='quickdate-close' ng-click='toggleCalendar()'><div ng-bind-html='closeButtonHtml'></div></a>
                 <div class='quickdate-text-inputs'>
