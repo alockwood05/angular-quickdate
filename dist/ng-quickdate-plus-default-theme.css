@@ -1,6 +1,7 @@
 .quickdate {
   display: inline-block;
   position: relative;
+  z-index: 100;
 }
 .quickdate-button div,
 .quickdate-action-link div {

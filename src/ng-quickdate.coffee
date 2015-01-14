@@ -15,7 +15,7 @@ app.provider "ngQuickdateDefaults", ->
         options: {
             dateFormat: 'M/d/yyyy'
             timeFormat: 'h:mm a'
-            labelFormat: null
+            labelFormat: 'M / d / yyyy'
             placeholder: 'Click to Set Date'
             hoverText: null
             buttonIconHtml: null
@@ -29,7 +29,7 @@ app.provider "ngQuickdateDefaults", ->
             disableDatepicker: false
             disableClearButton: false
             defaultTime: null
-            months: ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
+            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
             dayAbbreviations: ["Su", "M", "Tu", "W", "Th", "F", "Sa"]
             dateFilter: null
             defaultCalendarDate: null
@@ -227,7 +227,7 @@ app.directive "quickdate", ['ngQuickdateDefaults', '$filter', '$sce', (ngQuickda
             else
                 d1 = stringToDate(d1)
                 d2 = stringToDate(d2)
-                d1 && d2 && (d1.getYear() == d2.getYear()) && (d1.getMonth() == d2.getMonth()) && (d1.getDate() == d2.getDate())
+                d1 && d2 && (d1.getFullYear() == d2.getFullYear()) && (d1.getMonth() == d2.getMonth()) && (d1.getDate() == d2.getDate())
 
         datesAreEqualToMinute = (d1, d2) ->
             return false unless d1 && d2
@@ -378,7 +378,10 @@ app.run ['$templateCache', ($templateCache) ->
         'ngQuickdate/template.html'
         """
         <div class='quickdate'>
-            <a href='' ng-click='toggleCalendar(true)' ng-focus='toggleCalendar(true)' class='quickdate-button' title='{{hoverText}}' on-tab='onDateButtonTab()'><div ng-hide='iconClass' ng-bind-html='buttonIconHtml'></div>{{mainButtonStr}}</a>
+            <a href='' ng-click='toggleCalendar(true)' ng-focus='toggleCalendar(true)' class='quickdate-button' title='{{hoverText}}' on-tab='onDateButtonTab()'>
+                {{mainButtonStr}}
+                <div ng-hide='iconClass' ng-bind-html='buttonIconHtml'></div>
+            </a>
             <div class='quickdate-popup' ng-class='{open: calendarShown}'>
                 <a href='' tabindex='-1' class='quickdate-close' ng-click='toggleCalendar()'><div ng-bind-html='closeButtonHtml'></div></a>
                 <div class='quickdate-text-inputs'>

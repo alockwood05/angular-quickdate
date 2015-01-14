@@ -1,7 +1,7 @@
 {
   "name": "angular-quickdate",
   "repository": "https://github.com/alockwood05/angular-quickdate.git",
-  "version": "1.3.7",
+  "version": "1.3.8",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-coffee": "~0.7",
